@@ -1,16 +1,18 @@
-<h1><%= @article.title %></h1>
+<%= render "header", article: @article %>
+
+<h2><%= @article.title %></h2>
 
 <p><%= @article.body %></p>
 
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article),
+<ul class="edit-nav">
+  <li class="edit-nav-controllers"><%= link_to "Edit", edit_article_path(@article), class: "edit-nav-link" %></li>
+  <li class="edit-nav-controllers"><%= link_to "Destroy", article_path(@article),
                   method: :delete,
-                  data: { confirm: "Are you sure?" } %></li>
+                  data: { confirm: "Are you sure?" }, class: "edit-nav-link" %></li>
 </ul>
 
 <h2>Comments</h2>
 <%= render @article.comments %>
 
-<h2>Add a comment:</h2>
+<h2 class="edit-comments">Add a comment:</h2>
 <%= render 'comments/form' %>

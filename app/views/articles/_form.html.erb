@@ -1,4 +1,5 @@
 <%= form_with model: @article do |form| %>
+  <div class="new-form">
     <div>
       <%= form.label :title %><br>
       <%= form.text_field :title %>
@@ -14,14 +15,26 @@
         <div><%= message %></div>
       <% end %>
     </div>
+    
+    <div>
+      <% if article.article_picture.attached? %>
+        <%= image_tag article.article_picture, style: "max-width: 200px; height: auto; display: block" %>
+      <% end %>
+      <%= form.label :article_picture %><br>
+      <%= form.file_field :article_picture, class:"custom-file-input" %><br>
+      <% article.errors.full_messages_for(:article_picture).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
 
     <div>
         <%= form.label :status %><br>
         <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
     </div>
   
-    <div>
+    <div class="nav-item">
       <%= form.submit %>
     </div>
-  <% end %>
+  </div>
+<% end %>
   

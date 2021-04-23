@@ -1,15 +1,38 @@
-<h1>Articles</h1>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
-Our blog has <%= Article.public_count %> articles and counting!
+<%= render "header", article: @article %>
 
-<ul>
+<h1>Makeup blog</h1>
+
+Our blog has <%= Article.public_count %> articles!
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<div class="article-list">
   <% @articles.each do |article| %>
     <% unless article.archived? %>
-      <li>
-        <%= link_to article.title, article %>
-      </li>
+      <div class="article-list-title">
+        <p><%= article.title %></p>
+        <div>
+          # <% if article.article_picture.attached? && article.article_picture.representable? %><br>
+          # <% else %>
+              <img class="card-image" src="https://image-prod.iol.co.za/resize/610x61000?source=https://inm-baobab-prod-eu-west-1.s3.amazonaws.com/public/inm/glam/media/image/2020/05/28/48623012/Covidmakeup.jpg&operation=CROP&offset=0x0&resize=591x734"/>
+          # <% end %>
+        </div>
+        <br/>
+        <%= link_to "Read more", article %>
+      </div>
     <% end %>
   <% end %>
-</ul>
+</div>
 
-<%= link_to "New Article", new_article_path %>
+<div class="pagination">
+  <%= will_paginate @articles, renderer: BootstrapPagination::Rails, previous_label: "<<", next_label: ">>" %>
+</div>

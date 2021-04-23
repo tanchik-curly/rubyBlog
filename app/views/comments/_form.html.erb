@@ -1,20 +1,22 @@
 <%= form_with model: [ @article, @article.comments.build ] do |form| %>
-    <p>
+  <div class="comment-form">
+    <div>
       <%= form.label :commenter %><br>
       <%= form.text_field :commenter %>
-    </p>
-    <p>
+    </div>
+    <div>
       <%= form.label :body %><br>
       <%= form.text_area :body %>
-    </p>
+    </div>
 
     <div>
         <%= form.label :status %><br>
         <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
     </div>
     
-    <p>
+    <div class="nav-item">
       <%= form.submit %>
-    </p>
-  <% end %>
+    </div>
+  </div>
+<% end %>
   
