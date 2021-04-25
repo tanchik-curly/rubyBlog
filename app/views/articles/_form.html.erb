@@ -15,6 +15,14 @@
         <div><%= message %></div>
       <% end %>
     </div>
+
+    <div>
+      <%= form.label :author_nickname %><br>
+      <%= form.text_field :author_nickname %><br>
+      <% article.errors.full_messages_for(:author).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
     
     <div>
       <% if article.article_picture.attached? %>
@@ -29,7 +37,7 @@
 
     <div>
         <%= form.label :status %><br>
-        <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+        <%= form.select :status, ['public', 'private', 'archived'], selected: article.status %>
     </div>
   
     <div class="nav-item">
