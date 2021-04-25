@@ -101,8 +101,12 @@ class ArticlesController < ApplicationController
     @articles = Article.where('title LIKE ?', "%" + params[:q] + "%")
   end
 
+  def category_filter
+    @articles = Article.where('category = ?', params[:category])
+  end
+
   private
     def article_params
-      params.require(:article).permit(:title, :body, :status, :article_picture, :author_nickname, :author_email)
+      params.require(:article).permit(:title, :body, :status, :article_picture, :author_nickname, :author_email, :category)
     end
 end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get '/search', to: 'articles#search'
 
-  get '/category_filter', to: 'articles#filter'
+  get '/category_filter', to: 'articles#category_filter'
 
   resources :articles do
     resources :comments
