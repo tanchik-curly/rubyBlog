@@ -4,12 +4,14 @@
 
 <p><%= @article.body %></p>
 
-<ul class="edit-nav">
-  <li class="edit-nav-controllers"><%= link_to "Edit", edit_article_path(@article), class: "edit-nav-link" %></li>
-  <li class="edit-nav-controllers"><%= link_to "Destroy", article_path(@article),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" }, class: "edit-nav-link" %></li>
-</ul>
+<% if current_user != nil && current_user.email == @article.author_email %>
+  <ul class="edit-nav">
+    <li class="edit-nav-controllers"><%= link_to "Edit", edit_article_path(@article), class: "edit-nav-link" %></li>
+    <li class="edit-nav-controllers"><%= link_to "Destroy", article_path(@article),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" }, class: "edit-nav-link" %></li>
+  </ul>
+<% end %>
 
 <h2>Comments</h2>
 <%= render @article.comments %>

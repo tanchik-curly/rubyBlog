@@ -1,0 +1,5 @@
+<%= render "articles/header" %>
+
+<p class='notice'><%= notice %></p>
+<p class='alert'><%= alert %></p>
+<h1>Welcome on Makeup blog<%= name = current_user.present? ? ', ' + current_user.email : ', ' + 'Guest!' %></h1>
