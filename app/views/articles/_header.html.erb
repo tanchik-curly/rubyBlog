@@ -1,8 +1,8 @@
 <header class = "navbar">
         <div class = "navbar-inner">
             <div class = "home-container">
+            <a href="/" class = "nav-article">All articles</a>
             <% if user_signed_in? %>
-                <a href="/" class = "nav-article">All articles</a>
                 <%= link_to "Create article", new_article_path, class:"nav-article" %>
                 <a href= "/articles/my_articles", class = "nav-article">My articles</a>
             <% end %>

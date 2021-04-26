@@ -1,8 +1,25 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <%= render "header", article: @article %>
 
 <h2><%= @article.title %></h2>
 
 <p><%= @article.body %></p>
+
+<p>Author: <%= @article.author_nickname %></p>
+
+<p><%= @article.likes.count %> &#129505;</p>
+<div>
+  <div class="icon-like">
+    <%= button_to 'Like', article_likes_path(@article), method: :post %>
+  </div>
+  <% pre_like = @article.likes.find { |like| like.user_id == current_user.id } %>
+  <% if pre_like %>
+    <div class="icon-like">
+      <%= button_to 'Unlike', article_like_path(@article, pre_like), method: :delete %>
+    </div>
+  <% end %>
+</div><br/>
 
 <% if current_user != nil && current_user.email == @article.author_email %>
   <ul class="edit-nav">

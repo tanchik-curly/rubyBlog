@@ -1,5 +1,6 @@
 class Article < ApplicationRecord
     has_many :comments, dependent: :destroy
+    has_many :likes, dependent: :destroy
     include Visible
 
     has_one_attached :article_picture, dependent: :destroy
