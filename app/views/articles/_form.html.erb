@@ -27,9 +27,18 @@
     <div>
       <% if article.article_picture.attached? %>
         <%= image_tag article.article_picture, style: "max-width: 200px; height: auto; display: block" %>
+        <span>|</span>
+        <%= link_to 'Remove Image',
+          delete_image_article_url(image_id: article.article_picture.id),
+          method: :delete,
+          data: { confirm: 'Are you sure?' },
+          class: 'remove-upload'
+        %>
+        <span>|</span><br/>
       <% end %>
       <%= form.label :article_picture %><br>
       <%= form.file_field :article_picture, class:"custom-file-input" %><br>
+
       <% article.errors.full_messages_for(:article_picture).each do |message| %>
         <div><%= message %></div>
       <% end %>

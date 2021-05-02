@@ -11,6 +11,13 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
+
+  resources :articles, only: [:show, :edit, :update] do
+    member do
+      delete 'delete_image/:image_id', action: 'delete_image', as: 'delete_image'
+    end
+  end
+
   resources :articles do
     resources :likes
   end

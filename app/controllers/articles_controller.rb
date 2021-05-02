@@ -92,6 +92,17 @@ class ArticlesController < ApplicationController
     redirect_to root_path
   end
 
+  def delete_image 
+    @article = Article.find(params[:id])
+    image = ActiveStorage::Attachment.find(params[:image_id])
+    if @article == image.record
+      image.purge
+      redirect_back(fallback_location: request.referer)
+    else
+      redirect_to root_url, notice: 'Ahahah!'
+    end
+  end
+
   def my_articles
     @articles = Article.where(:author_email => current_user.email, :status => ['private', 'archived'])
       .paginate(:page => params[:page], :per_page => 4).order("created_at desc")
