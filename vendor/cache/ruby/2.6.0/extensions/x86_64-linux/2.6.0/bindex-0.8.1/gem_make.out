@@ -1,0 +1,15 @@
+current directory: /home/tanchik/blog/vendor/cache/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+/home/tanchik/.rvm/rubies/ruby-2.6.3/bin/ruby -I /home/tanchik/.rvm/rubies/ruby-2.6.3/lib/ruby/site_ruby/2.6.0 -r ./siteconf20210503-737-1hm00l4.rb extconf.rb
+creating Makefile
+
+current directory: /home/tanchik/blog/vendor/cache/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /home/tanchik/blog/vendor/cache/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.so
+
+current directory: /home/tanchik/blog/vendor/cache/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -m 0755 cruby.so ./.gem.20210503-737-pq3rpj/skiptrace/internal
