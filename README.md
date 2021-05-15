@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+В даному блозі реалізовано:
+1. Getting started
+2. Автентифікація різними користувачами
+3. Авторизація (перевірка прав)
+4. Пагінація
+5. Пошук за заголовком
+6. Фільтрування за категоріями
+7. Завантаження картинок
+8. Завантаження картинок на AWS S3 bucket
+9. Розгортання на Docker
+10. Розгортання на Heroku
+11. Система лайків
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Посилання на блог:
+https://whispering-falls-28859.herokuapp.com/
