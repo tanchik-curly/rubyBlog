@@ -1,7 +1,7 @@
 version: "3.4"
 
 services:
-  app:
+  web:
     build:
       context: .
       dockerfile: Dockerfile
@@ -29,7 +29,7 @@ services:
       context: .
       dockerfile: Dockerfile
     depends_on:
-      - app
+      - web
       - database
     volumes:
       - .:/app
