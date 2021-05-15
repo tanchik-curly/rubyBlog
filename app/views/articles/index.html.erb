@@ -3,31 +3,33 @@
 
 <%= render "header", article: @article %>
 
-<h1>Makeup blog</h1>
+<div style="padding: 10px; height:100%;">
+  <h1>Makeup blog</h1>
 
-Our blog has <%= Article.public_count %> articles!
+  Our blog has <%= Article.public_count %> articles!
 
-<%= render "search" %>
+  <%= render "search" %>
 
-<div class="article-list">
-  <% @articles.select { |article| article.status == "public" }.each do |article| %>
-    <% unless article.archived? %>
-      <div class="article-list-title">
-        <p><%= article.title %></p>
-        <div class="image-wrapper">
-          <% if article.article_picture.attached? %>
-            <img src="<%= (url_for(article.article_picture)) %>" class="card-image"/>
-          <% else %>
-            <img class="card-image" src="https://image-prod.iol.co.za/resize/610x61000?source=https://inm-baobab-prod-eu-west-1.s3.amazonaws.com/public/inm/glam/media/image/2020/05/28/48623012/Covidmakeup.jpg&operation=CROP&offset=0x0&resize=591x734"/>
-          <% end %>
+  <div class="article-list">
+    <% @articles.select { |article| article.status == "public" }.each do |article| %>
+      <% unless article.archived? %>
+        <div class="article-list-title">
+          <p><%= article.title %></p>
+          <div class="image-wrapper">
+            <% if article.article_picture.attached? %>
+              <img src="<%= (url_for(article.article_picture)) %>" class="card-image"/>
+            <% else %>
+              <img class="card-image" src="https://image-prod.iol.co.za/resize/610x61000?source=https://inm-baobab-prod-eu-west-1.s3.amazonaws.com/public/inm/glam/media/image/2020/05/28/48623012/Covidmakeup.jpg&operation=CROP&offset=0x0&resize=591x734"/>
+            <% end %>
+          </div>
+          <br/>
+          <%= link_to "Read more", article %>
         </div>
-        <br/>
-        <%= link_to "Read more", article %>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
-<div class="pagination">
-  <%= will_paginate @articles, renderer: BootstrapPagination::Rails, previous_label: "<<", next_label: ">>" %>
+  <div class="pagination">
+    <%= will_paginate @articles, renderer: BootstrapPagination::Rails, previous_label: "<<", next_label: ">>" %>
+  </div>
 </div>
